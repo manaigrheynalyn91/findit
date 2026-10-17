@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — FindIt</title>
+  <meta name="description" content="Log in to FindIt, the Pamantasan ng Cabuyao lost and found.">
+  <meta name="theme-color" content="#0d6234">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/login.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main" class="auth-layout">
+    <aside class="auth-aside" aria-hidden="true">
+      <img class="bg" src="assets/pnc-banner-wide.jpg" alt="">
+      <img class="seal" src="assets/pnc-seal-256.png" alt="">
+      <h2>Welcome back, Iskolar ng Cabuyao.</h2>
+      <p>Log in to post reports, manage the ones you've made, and see how to reach fellow students about an item.</p>
+      <ul>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Your reports follow you to any device</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Only you can edit or delete your reports</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Contact details are shown only to students</li>
+      </ul>
+    </aside>
+
+    <div class="auth-main">
+      <div class="auth-box">
+        <h1>Log in</h1>
+        <p>Use the email and password you registered with.</p>
+
+        <div id="form-alert" class="alert" hidden></div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error">
+            <span class="error-text" id="email-error"></span>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-error">
+              <button class="pw-toggle" type="button" data-pw-toggle="password" aria-label="Show password" aria-pressed="false"></button>
+            </div>
+            <span class="error-text" id="password-error"></span>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit">Log in</button>
+        </form>
+
+        <p class="auth-switch">New to FindIt? <a href="register.html" id="register-link">Create an account</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Reports — FindIt</title>
+  <meta name="theme-color" content="#0d6234">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/my-reports.js"></script>
+</head>
+<body data-protected="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head section-head">
+        <div>
+          <h1>My Reports</h1>
+          <p>Everything you've posted. Edit details, mark items as resolved when they're back home, or reopen them.</p>
+        </div>
+        <a class="btn btn-primary" href="report.html">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>New report
+        </a>
+      </div>
+
+      <div class="toolbar">
+        <div class="segmented" role="group" aria-label="Filter by status">
+          <button type="button" data-status="" aria-pressed="true">All</button>
+          <button type="button" data-status="open" aria-pressed="false">Open</button>
+          <button type="button" data-status="resolved" aria-pressed="false">Resolved</button>
+        </div>
+        <div class="segmented" role="group" aria-label="Filter by type">
+          <button type="button" data-type="" aria-pressed="true">Lost &amp; found</button>
+          <button type="button" data-type="lost" aria-pressed="false">Lost</button>
+          <button type="button" data-type="found" aria-pressed="false">Found</button>
+        </div>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+
+      <div class="grid section mt-0" id="results" aria-busy="true"></div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

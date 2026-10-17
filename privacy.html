@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — FindIt</title>
+  <meta name="description" content="How FindIt, the Pamantasan ng Cabuyao lost and found, collects, uses, and protects student information.">
+  <meta name="theme-color" content="#0d6234">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/privacy.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <h1>Privacy Policy</h1>
+        <p>Effective October 17, 2026 · Written in plain language for PnC students.</p>
+      </div>
+
+      <div class="privacy-layout mt-3">
+        <nav class="toc" aria-label="On this page">
+          <strong>On this page</strong>
+          <ol>
+            <li><a href="#who">Who we are</a></li>
+            <li><a href="#collect">What we collect</a></li>
+            <li><a href="#use">How we use it</a></li>
+            <li><a href="#visibility">Who can see what</a></li>
+            <li><a href="#protect">How we protect it</a></li>
+            <li><a href="#third">Services we rely on</a></li>
+            <li><a href="#retention">Keeping &amp; deleting data</a></li>
+            <li><a href="#rights">Your rights</a></li>
+            <li><a href="#safety">Posting safely</a></li>
+            <li><a href="#contact">Contact &amp; changes</a></li>
+          </ol>
+        </nav>
+
+        <article class="prose">
+          <div class="alert alert-info">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            <div><strong>The short version</strong><p>We ask only for your name and email. Report details are public so items can be found; your name and contact note are visible only to signed-in students; your email is never shown to anyone. Only you can edit or delete your reports.</p></div>
+          </div>
+
+          <h2 id="who">1. Who we are</h2>
+          <p>FindIt is a school lost-and-found website built as a CPP123 student project by Manaig, Rheynalyn M. (2CPE-B) for the Pamantasan ng Cabuyao community. It is <strong>not</strong> an official service of Pamantasan ng Cabuyao. In this policy, “we” means the FindIt project team.</p>
+
+          <h2 id="collect">2. What we collect</h2>
+          <ul>
+            <li><strong>Account details:</strong> your full name, email address, and password. Your password is stored only as a secure hash by our authentication provider; we can never see it.</li>
+            <li><strong>Reports you post:</strong> whether the item was lost or found, item name, category, description, campus location (and optional specific spot), date, status (open or resolved), and when the report was created or updated.</li>
+            <li><strong>Optional contact note:</strong> anything you choose to type in “How can students reach you?”.</li>
+            <li><strong>Technical data:</strong> a login token saved in your browser's local storage so you stay signed in, and standard server logs (such as IP address and time of request) kept by our hosting provider for security.</li>
+          </ul>
+          <p>We don't collect student ID numbers, photos, or your location, and we don't use tracking cookies, ads, or analytics.</p>
+
+          <h2 id="use">3. How we use it</h2>
+          <ul>
+            <li>To create and secure your account and keep you signed in across devices.</li>
+            <li>To show reports so lost items can be matched with their owners.</li>
+            <li>To make sure only you can change or remove your own reports.</li>
+            <li>To send account emails, such as the confirmation link when you register.</li>
+          </ul>
+          <p>We never sell your information or use it for marketing.</p>
+
+          <h2 id="visibility">4. Who can see what</h2>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Information</th><th scope="col">Who can see it</th></tr></thead>
+              <tbody>
+                <tr><td>Report details (item, category, description, location, date, status)</td><td>Anyone visiting FindIt</td></tr>
+                <tr><td>Your name on reports you post</td><td>Signed-in students only</td></tr>
+                <tr><td>Your contact note</td><td>Signed-in students only</td></tr>
+                <tr><td>Your email address</td><td>Only you. It is never shown on the site.</td></tr>
+                <tr><td>Your password</td><td>No one. It is stored only as a hash.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="protect">5. How we protect it</h2>
+          <ul>
+            <li>All connections use HTTPS encryption.</li>
+            <li>Database rules (row-level security) check every request on the server: only the student who posted a report can edit, resolve, reopen, or delete it.</li>
+            <li>Passwords must be at least 8 characters with letters and numbers.</li>
+            <li>The site limits which outside sources can run code on its pages.</li>
+          </ul>
+          <p>No system is perfectly secure, so please don't post anything you wouldn't want others to see.</p>
+
+          <h2 id="third">6. Services we rely on</h2>
+          <ul>
+            <li><strong>Supabase</strong> stores the database and handles sign-in. Data is hosted in Supabase's Tokyo, Japan region (Northeast Asia).</li>
+            <li><strong>jsDelivr</strong> delivers the code library the site uses to talk to Supabase.</li>
+            <li><strong>Google Fonts</strong> serves the website's typeface. Your browser contacts Google to download it, so Google may receive your IP address.</li>
+          </ul>
+
+          <h2 id="retention">7. Keeping and deleting data</h2>
+          <ul>
+            <li>Your reports stay on FindIt until you delete them. Resolved reports remain visible, marked as resolved.</li>
+            <li>You can delete any of your reports at any time from <a href="my-reports.html">My Reports</a>. Deleting a report also deletes its contact note.</li>
+            <li>To delete your whole account, email <a href="mailto:manaigrheynalyn91@gmail.com">manaigrheynalyn91@gmail.com</a> from the address you registered with. Your account and all of your reports will be removed.</li>
+            <li>When the project ends, all accounts and reports will be deleted.</li>
+          </ul>
+
+          <h2 id="rights">8. Your rights</h2>
+          <p>Under the Philippine Data Privacy Act of 2012 (Republic Act No. 10173), you have the right to be informed, to access your data, to object to processing, to have inaccurate data corrected, to have your data erased or blocked, to data portability, and to claim damages. You may also file a complaint with the National Privacy Commission. You can view and correct your reports yourself at any time; for anything else, <a href="#contact">contact us</a>.</p>
+
+          <h2 id="safety">9. Posting safely</h2>
+          <ul>
+            <li>Don't post ID numbers, card numbers, passwords, or your home address.</li>
+            <li>Describe found items generally and keep one or two details secret, so you can ask the real owner to confirm them.</li>
+            <li>Return items in public places on campus, or leave them with campus security or your college office.</li>
+          </ul>
+
+          <h2 id="contact">10. Contact and changes</h2>
+          <p>Questions, corrections, or deletion requests? Contact the developer, Manaig, Rheynalyn M. (2CPE-B, Pamantasan ng Cabuyao), at <a href="mailto:manaigrheynalyn91@gmail.com">manaigrheynalyn91@gmail.com</a>. If we change this policy, we'll update the effective date at the top of this page.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

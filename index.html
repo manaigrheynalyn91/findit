@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FindIt — Pamantasan ng Cabuyao Lost &amp; Found</title>
+  <meta name="description" content="FindIt helps Pamantasan ng Cabuyao students report lost and found items and reunite belongings with their owners.">
+  <meta name="theme-color" content="#0d6234">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow"><img src="assets/pnc-seal-128.png" alt="" width="24" height="24">Pamantasan ng Cabuyao · Student Lost &amp; Found</span>
+          <h1 id="hero-title">Lost something?<br><span class="accent">Found something?</span></h1>
+          <p class="lede">FindIt helps PnC students get their things back. Post what you lost or found, search reports from all over campus, and help every item find its way home.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="report.html?type=lost">
+              <span class="lead"><svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Report a lost item</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a class="btn btn-gold btn-lg" href="report.html?type=found">
+              <span class="lead"><svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>Report a found item</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <figure class="hero-photo">
+            <img src="assets/campus-crop.jpg" alt="The Pamantasan ng Cabuyao main building" width="540" height="352">
+            <figcaption><strong>Dangal ng Bayan</strong><span>A campus that looks out for one another.</span></figcaption>
+          </figure>
+          <img class="seal-badge" src="assets/pnc-seal-256.png" alt="Pamantasan ng Cabuyao seal" width="96" height="96">
+          <div class="floating-note" aria-live="polite">
+            <span class="dot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+            <span><span id="hero-resolved">—</span> items back with their owners</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container stats-wrap">
+      <section class="stats" aria-label="Report totals">
+        <div class="stat">
+          <span class="stat-icon open"><svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M16 13H8M16 17H8M10 9H8"/></svg></span>
+          <div class="stat-row"><span class="stat-num" id="stat-open">–</span><span class="stat-text"><span class="stat-label">Open reports</span><span class="stat-hint">Still looking for their owners</span></span></div>
+        </div>
+        <div class="stat">
+          <span class="stat-icon resolved"><svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div class="stat-row"><span class="stat-num" id="stat-resolved">–</span><span class="stat-text"><span class="stat-label">Resolved reports</span><span class="stat-hint">Reunited with their owners</span></span></div>
+        </div>
+        <div class="stat">
+          <span class="stat-icon total"><svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>
+          <div class="stat-row"><span class="stat-num" id="stat-total">–</span><span class="stat-text"><span class="stat-label">Total reports</span><span class="stat-hint">Posted by PnC students</span></span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section" id="browse" aria-labelledby="browse-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="browse-title">Recent reports</h2>
+            <p>Search everything students have posted across campus.</p>
+          </div>
+        </div>
+
+        <form class="filters" id="filters" role="search" aria-label="Search and filter reports">
+          <div class="field-icon search-field">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <label class="visually-hidden" for="q">Search reports</label>
+            <input class="input" id="q" name="q" type="search" placeholder="Search items (e.g. tumbler, ID, umbrella…)" autocomplete="off" maxlength="60">
+          </div>
+          <div class="field-icon">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.8 8.8a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/></svg>
+            <label class="visually-hidden" for="category">Category</label>
+            <select class="select" id="category" name="category"><option value="">All categories</option></select>
+          </div>
+          <div class="field-icon">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <label class="visually-hidden" for="location">Location</label>
+            <select class="select" id="location" name="location"><option value="">All locations</option></select>
+          </div>
+          <div class="field-icon">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <label class="visually-hidden" for="status">Status</label>
+            <select class="select" id="status" name="status">
+              <option value="">Any status</option>
+              <option value="open">Open</option>
+              <option value="resolved">Resolved</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="toolbar">
+          <div class="segmented" role="group" aria-label="Report type">
+            <button type="button" data-type="" aria-pressed="true">All</button>
+            <button type="button" data-type="lost" aria-pressed="false">Lost</button>
+            <button type="button" data-type="found" aria-pressed="false">Found</button>
+          </div>
+          <div>
+            <span class="result-count" id="result-count" aria-live="polite"></span>
+            <button class="btn btn-sm btn-ghost" type="button" id="clear-filters" hidden>Clear filters</button>
+          </div>
+        </div>
+
+        <div class="grid" id="results" aria-busy="true"></div>
+        <div class="load-more"><button class="btn" type="button" id="load-more" hidden>Load more reports</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

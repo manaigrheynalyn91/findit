@@ -1,0 +1,28 @@
+FindIt access-control self-test — run 2026-10-17 in the Supabase SQL Editor (project bnydgrdszxgmjvhngcgh)
+All test data rolled back.
+01 profiles auto-created on registration: PASS
+02 A creates a lost and a found report: PASS
+03 A creates a report owned by B: PASS (blocked 42501)
+04 future date rejected: PASS (23514)
+05 A adds contact note to own report: PASS
+06 A resolves own report: PASS
+07 A reopens own report: PASS
+08 A edits own report: PASS
+09 A tries to transfer ownership to B: PASS (owner unchanged)
+10 B can view A's report: PASS
+11 B edits A's report: PASS (0 rows changed)
+12 B resolves A's report: PASS (0 rows changed)
+13 B deletes A's report: PASS (0 rows deleted)
+14 B attaches contact to A's report: PASS (blocked 42501)
+15 B edits A's contact note: PASS (0 rows changed)
+16 B (signed in) can read contact note: PASS
+17 B can see reporter name: PASS
+18 logged-out visitor can browse reports: PASS
+19 logged-out create: PASS (blocked 42501)
+20 logged-out edit: PASS (blocked 42501)
+21 logged-out delete: PASS (blocked 42501)
+22 logged-out reads contact notes: PASS (blocked 42501)
+23 logged-out reads student names: PASS (blocked 42501)
+24 logged-out can read totals: PASS
+25 A deletes own report: PASS
+26 contact note deleted with its report: PASS

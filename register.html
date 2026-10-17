@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an account — FindIt</title>
+  <meta name="description" content="Register for FindIt, the Pamantasan ng Cabuyao lost and found.">
+  <meta name="theme-color" content="#0d6234">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/register.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main" class="auth-layout">
+    <aside class="auth-aside" aria-hidden="true">
+      <img class="bg" src="assets/pnc-banner-wide.jpg" alt="">
+      <img class="seal" src="assets/pnc-seal-256.png" alt="">
+      <h2>Join the campus lost &amp; found.</h2>
+      <p>One free account lets you post reports, track them from your phone or laptop, and close them once an item is back home.</p>
+      <ul>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Takes less than a minute</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>We only ask for your name and email</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Delete your reports anytime</li>
+      </ul>
+    </aside>
+
+    <div class="auth-main">
+      <div class="auth-box">
+        <div id="register-view">
+          <h1>Create your account</h1>
+          <p>For students of Pamantasan ng Cabuyao.</p>
+
+          <div id="form-alert" class="alert" hidden></div>
+
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label for="full_name">Full name</label>
+              <input class="input" id="full_name" name="full_name" type="text" autocomplete="name" maxlength="80" required aria-describedby="full_name-error">
+              <span class="error-text" id="full_name-error"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error">
+              <span class="hint" id="email-hint">We'll send a confirmation link to this address.</span>
+              <span class="error-text" id="email-error"></span>
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <div class="pw-wrap">
+                <input class="input" id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="password-hint password-error">
+                <button class="pw-toggle" type="button" data-pw-toggle="password" aria-label="Show password" aria-pressed="false"></button>
+              </div>
+              <span class="hint" id="password-hint">At least 8 characters, with letters and numbers.</span>
+              <span class="error-text" id="password-error"></span>
+            </div>
+            <div class="field">
+              <label for="confirm">Confirm password</label>
+              <input class="input" id="confirm" name="confirm" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="confirm-error">
+              <span class="error-text" id="confirm-error"></span>
+            </div>
+            <div class="field">
+              <label class="check" for="agree">
+                <input type="checkbox" id="agree" name="agree" required aria-describedby="agree-error">
+                <span>I've read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and agree to how FindIt uses my information.</span>
+              </label>
+              <span class="error-text" id="agree-error"></span>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit">Create account</button>
+          </form>
+
+          <p class="auth-switch">Already have an account? <a href="login.html" id="login-link">Log in</a></p>
+        </div>
+
+        <div id="check-email" hidden>
+          <h1>Check your email</h1>
+          <div class="alert alert-success" role="status">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <div><strong>Almost done!</strong><p>We sent a confirmation link to <b id="sent-to"></b>. Open it to activate your account, then log in.</p></div>
+          </div>
+          <p class="text-muted">Can't find it? Check your spam or promotions folder. The link can take a few minutes to arrive.</p>
+          <a class="btn btn-primary btn-block" href="login.html">Go to log in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

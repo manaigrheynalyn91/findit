@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New report — FindIt</title>
+  <meta name="theme-color" content="#0d6234">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/report-form.js"></script>
+</head>
+<body data-protected="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main">
+    <div class="container narrow">
+      <div class="page-head">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="my-reports.html">My Reports</a> / <span id="crumb">New report</span></nav>
+        <h1 id="page-title">Post a report</h1>
+        <p id="page-intro">Clear details help the owner (or finder) recognize the item quickly.</p>
+      </div>
+
+      <div id="form-alert" class="alert mt-2" hidden></div>
+
+      <div class="loading-page" id="loading"><span class="spinner" aria-hidden="true"></span><span>Loading…</span></div>
+
+      <form class="form-card mt-2" id="report-form" novalidate hidden>
+        <div class="form-grid">
+          <fieldset class="field full">
+            <legend>What happened? <span class="req" aria-hidden="true">*</span></legend>
+            <div class="type-choice">
+              <label class="lost">
+                <input type="radio" name="report_type" value="lost" required>
+                <span class="tc-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <span>I lost something<small>Ask the campus to keep an eye out</small></span>
+              </label>
+              <label class="found">
+                <input type="radio" name="report_type" value="found">
+                <span class="tc-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></span>
+                <span>I found something<small>Help it get back to its owner</small></span>
+              </label>
+            </div>
+            <span class="error-text" id="report_type-error"></span>
+          </fieldset>
+
+          <div class="field">
+            <label for="item_name">Item name <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="item_name" name="item_name" type="text" maxlength="80" required placeholder="e.g. Green Aquaflask tumbler" aria-describedby="item_name-error">
+            <span class="error-text" id="item_name-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="category">Category <span class="req" aria-hidden="true">*</span></label>
+            <select class="select" id="category" name="category" required aria-describedby="category-error">
+              <option value="">Choose a category</option>
+            </select>
+            <span class="error-text" id="category-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="location">Location <span class="req" aria-hidden="true">*</span></label>
+            <select class="select" id="location" name="location" required aria-describedby="location-error">
+              <option value="">Where on campus?</option>
+            </select>
+            <span class="error-text" id="location-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="location_detail">Specific spot <span class="optional">(optional)</span></label>
+            <input class="input" id="location_detail" name="location_detail" type="text" maxlength="80" placeholder="e.g. Room 304, near the stairs" aria-describedby="location_detail-error">
+            <span class="error-text" id="location_detail-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="item_date" id="date-label">Date <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="item_date" name="item_date" type="date" required aria-describedby="item_date-error">
+            <span class="error-text" id="item_date-error"></span>
+          </div>
+
+          <div class="field full">
+            <label for="description">Description <span class="req" aria-hidden="true">*</span></label>
+            <textarea class="input" id="description" name="description" maxlength="600" required aria-describedby="description-hint description-error" placeholder="Color, brand, stickers, what was inside… Leave out details only the real owner would know, so you can verify them."></textarea>
+            <div class="hint" id="description-hint"><span id="desc-count" class="counter">0 / 600</span></div>
+            <span class="error-text" id="description-error"></span>
+          </div>
+
+          <div class="field full">
+            <label for="contact">How can students reach you? <span class="optional">(optional)</span></label>
+            <input class="input" id="contact" name="contact" type="text" maxlength="120" placeholder="e.g. Message me on Messenger: Juan Dela Cruz · or · Left at the guard house" aria-describedby="contact-hint contact-error">
+            <span class="hint" id="contact-hint">Only signed-in students can see this. Don't share your home address or ID numbers.</span>
+            <span class="error-text" id="contact-error"></span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn btn-ghost" href="my-reports.html" id="cancel">Cancel</a>
+          <button class="btn btn-primary" type="submit" id="submit">Post report</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

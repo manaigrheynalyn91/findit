@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — FindIt</title>
+  <meta name="theme-color" content="#0d6234">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/boot.js" defer></script>
+  <script type="module" src="js/dashboard.js"></script>
+</head>
+<body data-protected="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header header-placeholder"></header>
+
+  <main id="main">
+    <div class="container section">
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div>
+          <h1 id="welcome-title">Hello!</h1>
+          <p id="welcome-sub">Here's what's happening with your reports.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-gold" href="report.html?type=lost">Report lost item</a>
+          <a class="btn" href="report.html?type=found">Report found item</a>
+        </div>
+      </section>
+
+      <section class="mini-stats" aria-label="Your report totals">
+        <div class="mini-stat"><div class="n" id="m-lost">–</div><div class="l">Your open lost reports</div></div>
+        <div class="mini-stat"><div class="n" id="m-found">–</div><div class="l">Your open found reports</div></div>
+        <div class="mini-stat"><div class="n" id="m-resolved">–</div><div class="l">Your resolved reports</div></div>
+        <div class="mini-stat"><div class="n" id="m-campus">–</div><div class="l">Open reports on campus</div></div>
+      </section>
+
+      <div class="two-col mt-3">
+        <section aria-labelledby="mine-title">
+          <div class="section-head">
+            <div><h2 id="mine-title">Your latest reports</h2></div>
+            <a href="my-reports.html">See all</a>
+          </div>
+          <div class="list-cards" id="mine" aria-busy="true"></div>
+        </section>
+        <section aria-labelledby="found-title">
+          <div class="section-head">
+            <div><h2 id="found-title">Recently found — maybe yours?</h2></div>
+            <a href="index.html?type=found&amp;status=open#browse">Browse found</a>
+          </div>
+          <div class="list-cards" id="found" aria-busy="true"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>
