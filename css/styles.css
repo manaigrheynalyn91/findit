@@ -138,7 +138,7 @@ p { margin: 0 0 1em; }
 .hero-photo figcaption strong { display: block; font-size: 1.15rem; }
 .hero-photo figcaption span { font-size: .88rem; opacity: .9; }
 .seal-badge { position: absolute; top: -18px; left: -18px; width: 96px; height: 96px; border-radius: 50%; background: #fff; padding: 6px; box-shadow: var(--shadow); }
-.floating-note { position: absolute; right: -12px; bottom: 54px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: #fff; box-shadow: var(--shadow); font-size: .85rem; font-weight: 700; color: var(--ink-2); }
+.floating-note { position: absolute; right: -12px; bottom: -26px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: #fff; box-shadow: var(--shadow); font-size: .85rem; font-weight: 700; color: var(--ink-2); }
 .floating-note .dot { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--green-100); color: var(--green-700); }
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 36px; padding: 36px 20px 44px; }
