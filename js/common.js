@@ -19,7 +19,22 @@ export const LOCATIONS = [
   "Main Building", "Library", "Canteen", "Gymnasium", "Covered Court", "Computer Laboratory",
   "Classroom", "Main Gate", "Parking Area", "Restroom", "Other",
 ];
-const categoryIcon = Object.fromEntries(CATEGORIES);
+export const categoryIcon = Object.fromEntries(CATEGORIES);
+
+/* Item photos live in a public Storage bucket, one folder per student. */
+export const PHOTO_BUCKET = "report-photos";
+export function photoUrl(path) {
+  if (!path) return "";
+  const safe = String(path).split("/").map(encodeURIComponent).join("/");
+  return `${SUPABASE_URL}/storage/v1/object/public/${PHOTO_BUCKET}/${safe}`;
+}
+function thumbHtml(r, cls = "") {
+  const state = r.status === "resolved" ? "resolved" : r.report_type;
+  if (r.photo_path) {
+    return `<div class="card-thumb has-photo ${cls}"><img src="${esc(photoUrl(r.photo_path))}" alt="Photo of ${esc(r.item_name)}" loading="lazy" decoding="async"></div>`;
+  }
+  return `<div class="card-thumb ${state} ${cls}" aria-hidden="true">${icon(categoryIcon[r.category] || "box")}</div>`;
+}
 
 /* ------------------------------------------------------------------ */
 /* Icons (Lucide-style, inline SVG)                                    */
@@ -125,6 +140,17 @@ export function friendlyError(err, context = "general") {
   if (code === "signup_disabled") return "New registrations are currently closed.";
   if (code === "session_expired" || code === "PGRST301" || msg.includes("jwt expired") || msg.includes("refresh token"))
     return "Your session has expired. Please log in again.";
+
+  // Photo storage
+  if (context === "photo") {
+    if (msg.includes("maximum allowed size") || msg.includes("too large") || status === 413)
+      return "That photo is still too large after resizing. Try a different photo.";
+    if (msg.includes("mime type") || msg.includes("not supported"))
+      return "That file type isn't allowed. Use a JPG, PNG, or WebP photo.";
+    if (msg.includes("row-level security") || msg.includes("unauthorized") || status === 403)
+      return "You can only upload photos while logged in, to your own reports. Please log in again and retry.";
+    return "The photo couldn't be uploaded. Check your connection and try again.";
+  }
 
   // Database
   if (code === "42501" || msg.includes("row-level security") || msg.includes("permission denied"))
@@ -362,13 +388,12 @@ export function locationText(r) {
  */
 export function reportCard(r, opts = {}) {
   const resolved = r.status === "resolved";
-  const thumbClass = resolved ? "resolved" : r.report_type;
   const isMine = opts.userId && r.user_id === opts.userId;
   const reporter = r.profiles?.full_name ? `by ${esc(firstName(r.profiles.full_name))} · ` : "";
   return `
   <article class="card ${resolved ? "resolved" : ""} ${opts.mine ? "" : "is-clickable"}" data-id="${esc(r.id)}">
     <div class="card-body">
-      <div class="card-thumb ${thumbClass}" aria-hidden="true">${icon(categoryIcon[r.category] || "box")}</div>
+      ${thumbHtml(r)}
       <div class="card-main">
         <div class="badges">${badgeFor(r)}${isMine && !opts.mine ? '<span class="badge badge-mine">Yours</span>' : ""}</div>
         <h3 class="card-title">${opts.mine ? esc(r.item_name) : `<a href="#report-${esc(r.id)}" data-open="${esc(r.id)}">${esc(r.item_name)}</a>`}</h3>
@@ -425,10 +450,11 @@ export async function openReportDialog(report, session) {
   dlg.innerHTML = `
     <div class="dialog-head">
       <div class="card-thumb ${r.status === "resolved" ? "resolved" : r.report_type}" aria-hidden="true">${icon(categoryIcon[r.category] || "box")}</div>
-      <div><div class="badges">${badgeFor(r)}</div><h2 id="rd-title">${esc(r.item_name)}</h2></div>
+      <div class="dialog-title"><div class="badges">${badgeFor(r)}</div><h2 id="rd-title">${esc(r.item_name)}</h2></div>
       <button class="btn btn-ghost btn-icon dialog-close" type="button" aria-label="Close" data-close>${icon("x")}</button>
     </div>
     <div class="dialog-body">
+      ${r.photo_path ? `<figure class="detail-photo"><img src="${esc(photoUrl(r.photo_path))}" alt="Photo of ${esc(r.item_name)}"></figure>` : ""}
       <dl class="detail-list">
         <dt>${icon("tag", "icon-sm")}Category</dt><dd>${esc(r.category)}</dd>
         <dt>${icon("pin", "icon-sm")}Location</dt><dd>${esc(locationText(r))}</dd>

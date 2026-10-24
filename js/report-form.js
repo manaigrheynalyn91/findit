@@ -1,7 +1,8 @@
 import {
   supabase, initPage, requireAuth, CATEGORIES, LOCATIONS, friendlyError, showAlert, hideAlert,
-  setBusy, setFlash, todayLocal, icon,
+  setBusy, setFlash, todayLocal, icon, photoUrl, esc,
 } from "./common.js";
+import { preparePhoto, uploadPhoto, deletePhoto } from "./photo.js";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const form = document.getElementById("report-form");
@@ -11,6 +12,48 @@ const submit = document.getElementById("submit");
 const params = new URLSearchParams(location.search);
 const editId = params.get("id");
 let existingContact = null;
+
+// ---------- photo state ----------
+let existingPhoto = null;   // storage path saved on the report
+let newPhoto = null;        // prepared Blob waiting to upload
+let removePhoto = false;    // owner chose "Remove photo"
+let previewUrl = null;
+const photoInput = document.getElementById("photo");
+const photoPreview = document.getElementById("photo-preview");
+const photoRemove = document.getElementById("photo-remove");
+const photoPickText = document.getElementById("photo-pick-text");
+const placeholderIcon = photoPreview.innerHTML;
+
+function renderPhoto() {
+  if (previewUrl) { URL.revokeObjectURL(previewUrl); previewUrl = null; }
+  let src = "";
+  if (newPhoto) src = previewUrl = URL.createObjectURL(newPhoto);
+  else if (existingPhoto && !removePhoto) src = photoUrl(existingPhoto);
+  photoPreview.innerHTML = src ? `<img src="${esc(src)}" alt="Selected photo preview">` : placeholderIcon;
+  photoRemove.hidden = !src;
+  photoPickText.textContent = src ? "Change photo" : "Add a photo";
+}
+
+photoInput.addEventListener("change", async () => {
+  const file = photoInput.files?.[0];
+  photoInput.value = "";
+  if (!file) return;
+  setError("photo", "");
+  photoPickText.textContent = "Preparing…";
+  try {
+    newPhoto = await preparePhoto(file);
+    removePhoto = false;
+  } catch (err) {
+    setError("photo", err.message);
+  }
+  renderPhoto();
+});
+photoRemove.addEventListener("click", () => {
+  newPhoto = null;
+  removePhoto = true;
+  setError("photo", "");
+  renderPhoto();
+});
 
 for (const [c] of CATEGORIES) form.category.add(new Option(c, c));
 for (const l of LOCATIONS) form.location.add(new Option(l, l));
@@ -29,7 +72,7 @@ form.querySelectorAll("input[name=report_type]").forEach((r) => r.addEventListen
 
 function setError(id, message) {
   const out = document.getElementById(`${id}-error`);
-  const input = form.elements[id];
+  const input = id === "photo" ? null : form.elements[id];
   if (input?.setAttribute && !(input instanceof RadioNodeList)) {
     if (message) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid");
   }
@@ -105,6 +148,8 @@ if (editId) {
     else if (r.user_id !== session.user.id) showBlocked("You can't edit this report", "Only the student who posted a report can edit it. You can still view it on the Browse page.");
     else {
       fill(r);
+      existingPhoto = r.photo_path || null;
+      renderPhoto();
       const { data: c } = await supabase.from("report_contacts").select("contact").eq("report_id", r.id).maybeSingle();
       existingContact = c?.contact || null;
       form.contact.value = existingContact || "";
@@ -130,9 +175,24 @@ form.addEventListener("submit", async (e) => {
     return;
   }
   const { contact, ...report } = v;
-  setBusy(submit, true, editId ? "Saving…" : "Posting…");
+  setBusy(submit, true, newPhoto ? "Uploading photo…" : editId ? "Saving…" : "Posting…");
 
+  let uploaded = null;
   try {
+    // 1) Upload a new photo first, into this student's own folder.
+    if (newPhoto) {
+      try {
+        uploaded = await uploadPhoto(session.user.id, newPhoto);
+      } catch (err) {
+        const e = err instanceof Error ? err : Object.assign(new Error(err?.message || "Upload failed"), err);
+        e.photo = true;
+        throw e;
+      }
+      report.photo_path = uploaded;
+    } else if (removePhoto) {
+      report.photo_path = null;
+    }
+
     let reportId = editId;
     if (editId) {
       const { data, error } = await supabase.from("reports").update(report).eq("id", editId).select("id");
@@ -153,9 +213,19 @@ form.addEventListener("submit", async (e) => {
       await supabase.from("report_contacts").delete().eq("report_id", reportId);
     }
 
+    // 2) Remove the old photo file if it was replaced or removed.
+    if (existingPhoto && (uploaded || removePhoto)) await deletePhoto(existingPhoto);
+
     setFlash((editId ? "Changes saved." : `Your ${report.report_type} report is posted.`) + contactWarning, contactWarning ? "error" : "success");
     location.href = "my-reports.html";
   } catch (err) {
+    if (uploaded) await deletePhoto(uploaded); // don't leave an orphaned file behind
+    if (err?.photo) {
+      setError("photo", friendlyError(err, "photo"));
+      showAlert(alertBox, "Your photo couldn't be uploaded, so nothing was saved. Try again, choose a different photo, or remove it.", "error", "Photo upload failed");
+      setBusy(submit, false);
+      return;
+    }
     showAlert(alertBox, friendlyError(err, "write"), "error", editId ? "Couldn't save your changes" : "Couldn't post your report");
     setBusy(submit, false);
   }

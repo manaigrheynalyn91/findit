@@ -6,7 +6,7 @@
   <title>Log in — FindIt</title>
   <meta name="description" content="Log in to FindIt, the Pamantasan ng Cabuyao lost and found.">
   <meta name="theme-color" content="#0d6234">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://bnydgrdszxgmjvhngcgh.supabase.co; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,7 @@
             <span class="error-text" id="email-error"></span>
           </div>
           <div class="field">
-            <label for="password">Password</label>
+            <div class="auth-row"><label for="password">Password</label><a href="forgot-password.html" id="forgot-link">Forgot password?</a></div>
             <div class="pw-wrap">
               <input class="input" id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-error">
               <button class="pw-toggle" type="button" data-pw-toggle="password" aria-label="Show password" aria-pressed="false"></button>

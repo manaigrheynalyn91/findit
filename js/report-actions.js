@@ -1,6 +1,7 @@
 // Owner actions: resolve, reopen, delete. Row-level security on the server
 // enforces ownership; these checks just give clear feedback in the UI.
 import { supabase, friendlyError, toast, esc, icon } from "./common.js";
+import { deletePhoto } from "./photo.js";
 
 function confirmDelete(name) {
   return new Promise((resolve) => {
@@ -49,6 +50,7 @@ export async function handleReportAction(btn, reports) {
     btn.innerHTML = label;
     return !error; // refresh if the row vanished
   }
+  if (action === "delete" && report.photo_path) await deletePhoto(report.photo_path);
   toast(
     action === "delete" ? `Deleted “${report.item_name}”.`
       : action === "resolve" ? `Nice! “${report.item_name}” is marked as resolved.`

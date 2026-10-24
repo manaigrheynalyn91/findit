@@ -6,7 +6,7 @@
   <title>Dashboard — FindIt</title>
   <meta name="theme-color" content="#0d6234">
   <meta name="robots" content="noindex">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://bnydgrdszxgmjvhngcgh.supabase.co; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +38,16 @@
         <div class="mini-stat"><div class="n" id="m-found">–</div><div class="l">Your open found reports</div></div>
         <div class="mini-stat"><div class="n" id="m-resolved">–</div><div class="l">Your resolved reports</div></div>
         <div class="mini-stat"><div class="n" id="m-campus">–</div><div class="l">Open reports on campus</div></div>
+      </section>
+
+      <section class="mt-3" aria-labelledby="matches-title" id="matches-section" hidden>
+        <div class="section-head">
+          <div>
+            <h2 id="matches-title">Possible matches for your lost items</h2>
+            <p>Found reports from other students in the same category, posted around the time you lost your item.</p>
+          </div>
+        </div>
+        <div id="matches"></div>
       </section>
 
       <div class="two-col mt-3">

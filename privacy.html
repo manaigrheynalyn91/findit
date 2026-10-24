@@ -6,7 +6,7 @@
   <title>Privacy Policy — FindIt</title>
   <meta name="description" content="How FindIt, the Pamantasan ng Cabuyao lost and found, collects, uses, and protects student information.">
   <meta name="theme-color" content="#0d6234">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://bnydgrdszxgmjvhngcgh.supabase.co; connect-src 'self' https://bnydgrdszxgmjvhngcgh.supabase.co wss://bnydgrdszxgmjvhngcgh.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <div class="container">
       <div class="page-head">
         <h1>Privacy Policy</h1>
-        <p>Effective October 17, 2026 · Written in plain language for PnC students.</p>
+        <p>Effective October 24, 2026 · Written in plain language for PnC students.</p>
       </div>
 
       <div class="privacy-layout mt-3">
@@ -57,17 +57,18 @@
           <ul>
             <li><strong>Account details:</strong> your full name, email address, and password. Your password is stored only as a secure hash by our authentication provider; we can never see it.</li>
             <li><strong>Reports you post:</strong> whether the item was lost or found, item name, category, description, campus location (and optional specific spot), date, status (open or resolved), and when the report was created or updated.</li>
+            <li><strong>Optional item photo:</strong> a picture of the item, if you choose to add one. Before upload, your browser resizes it and saves it as a new JPEG, which removes hidden photo data such as GPS location and camera details.</li>
             <li><strong>Optional contact note:</strong> anything you choose to type in “How can students reach you?”.</li>
             <li><strong>Technical data:</strong> a login token saved in your browser's local storage so you stay signed in, and standard server logs (such as IP address and time of request) kept by our hosting provider for security.</li>
           </ul>
-          <p>We don't collect student ID numbers, photos, or your location, and we don't use tracking cookies, ads, or analytics.</p>
+          <p>We don't collect student ID numbers or your location, and we don't use tracking cookies, ads, or analytics.</p>
 
           <h2 id="use">3. How we use it</h2>
           <ul>
             <li>To create and secure your account and keep you signed in across devices.</li>
             <li>To show reports so lost items can be matched with their owners.</li>
             <li>To make sure only you can change or remove your own reports.</li>
-            <li>To send account emails, such as the confirmation link when you register.</li>
+            <li>To send account emails, such as a password reset link when you ask for one.</li>
           </ul>
           <p>We never sell your information or use it for marketing.</p>
 
@@ -78,6 +79,7 @@
               <tbody>
                 <tr><td>Report details (item, category, description, location, date, status)</td><td>Anyone visiting FindIt</td></tr>
                 <tr><td>Your name on reports you post</td><td>Signed-in students only</td></tr>
+                <tr><td>Item photos you add</td><td>Anyone visiting FindIt. Photos are stored in a public folder so they can be shown on reports.</td></tr>
                 <tr><td>Your contact note</td><td>Signed-in students only</td></tr>
                 <tr><td>Your email address</td><td>Only you. It is never shown on the site.</td></tr>
                 <tr><td>Your password</td><td>No one. It is stored only as a hash.</td></tr>
@@ -96,7 +98,7 @@
 
           <h2 id="third">6. Services we rely on</h2>
           <ul>
-            <li><strong>Supabase</strong> stores the database and handles sign-in. Data is hosted in Supabase's Tokyo, Japan region (Northeast Asia).</li>
+            <li><strong>Supabase</strong> stores the database and item photos, handles sign-in, and sends account emails such as password reset links. Data is hosted in Supabase's Tokyo, Japan region (Northeast Asia).</li>
             <li><strong>jsDelivr</strong> delivers the code library the site uses to talk to Supabase.</li>
             <li><strong>Google Fonts</strong> serves the website's typeface. Your browser contacts Google to download it, so Google may receive your IP address.</li>
           </ul>
@@ -104,7 +106,7 @@
           <h2 id="retention">7. Keeping and deleting data</h2>
           <ul>
             <li>Your reports stay on FindIt until you delete them. Resolved reports remain visible, marked as resolved.</li>
-            <li>You can delete any of your reports at any time from <a href="my-reports.html">My Reports</a>. Deleting a report also deletes its contact note.</li>
+            <li>You can delete any of your reports at any time from <a href="my-reports.html">My Reports</a>. Deleting a report also deletes its contact note and photo. Replacing or removing a photo deletes the old file.</li>
             <li>To delete your whole account, email <a href="mailto:manaigrheynalyn91@gmail.com">manaigrheynalyn91@gmail.com</a> from the address you registered with. Your account and all of your reports will be removed.</li>
             <li>When the project ends, all accounts and reports will be deleted.</li>
           </ul>
@@ -116,6 +118,7 @@
           <ul>
             <li>Don't post ID numbers, card numbers, passwords, or your home address.</li>
             <li>Describe found items generally and keep one or two details secret, so you can ask the real owner to confirm them.</li>
+            <li>Photos are public. Don't photograph faces, ID numbers, card numbers, or anything written inside a notebook or wallet.</li>
             <li>Return items in public places on campus, or leave them with campus security or your college office.</li>
           </ul>
 

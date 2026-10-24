@@ -6,8 +6,9 @@ CPP123 Emerging Technology individual final project by **Manaig, Rheynalyn M. (2
 **Live site:** https://manaigrheynalyn91.github.io/findit/
 
 ## Features
-- Student registration, login, and logout
-- Post lost or found reports (item name, category, description, location, date, type)
+- Student registration, login, and logout, with "Forgot password?" email reset
+- Post lost or found reports (item name, category, description, location, date, type), with an optional photo that is resized and stripped of location data in the browser
+- "Possible matches" on the dashboard: found reports in the same category posted around the time you lost something
 - Search with category, location, status, and lost/found filters
 - Edit, delete, resolve, and reopen your own reports
 - Student dashboard and My Reports page
@@ -41,7 +42,10 @@ python -m http.server 5173
 Then open http://127.0.0.1:5173/
 
 ## Set up a new Supabase project
-1. Run `supabase/schema.sql` in the Supabase SQL Editor.
+1. Run `supabase/schema.sql`, then `supabase/migration-002-photos.sql`, in the Supabase SQL Editor.
 2. Go to Authentication → Sign In / Providers → Email and turn off **Confirm email**, or set up your own SMTP.
-3. Go to Authentication → URL Configuration and set **Site URL** to the live site's address.
+3. Go to Authentication → URL Configuration. Set **Site URL** to the live site's address, and add `<live site>/**` under Redirect URLs (needed for password reset links).
 4. Put your project URL and publishable key in `js/config.js`, and the project URL in each page's `Content-Security-Policy` meta tag.
+
+## Known limitation
+Supabase's built-in email service only sends to the project team's own addresses and only a few emails per hour. Password reset emails will reach other students only after a custom SMTP provider is added (Authentication → Emails → SMTP Settings).

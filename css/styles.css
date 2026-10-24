@@ -383,6 +383,33 @@ dialog::backdrop { background: rgba(6, 30, 18, .55); backdrop-filter: blur(2px);
 @media (max-width: 760px) { .footer-inner { grid-template-columns: 1fr; gap: 22px; } }
 
 .header-placeholder { min-height: 73px; }
+
+/* Item photos */
+.card-thumb.has-photo { width: 116px; height: 132px; padding: 0; overflow: hidden; background: #eef2ef; box-shadow: inset 0 0 0 1px var(--line); }
+@media (max-width: 400px) { .card-thumb.has-photo { width: 92px; height: 108px; } }
+.dialog-head .card-thumb.has-photo { width: 74px; height: 74px; }
+.card-thumb.has-photo img { width: 100%; height: 100%; object-fit: cover; }
+.card.resolved .card-thumb.has-photo img { filter: grayscale(.6); opacity: .8; }
+.detail-photo { margin: 0 0 16px; border-radius: 14px; overflow: hidden; background: #eef2ef; border: 1px solid var(--line); }
+.detail-photo img { width: 100%; max-height: 340px; object-fit: contain; }
+.photo-field { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 14px; border: 1.5px dashed #c3d2c7; border-radius: 14px; background: #fbfcfb; }
+.photo-preview { width: 112px; height: 112px; border-radius: 14px; overflow: hidden; display: grid; place-items: center; background: var(--green-50); color: var(--green-700); flex: none; border: 1px solid var(--line); }
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.photo-controls { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1; }
+.photo-controls .row { display: flex; gap: 8px; flex-wrap: wrap; }
+.photo-controls label.btn { position: relative; }
+.photo-controls label.btn input[type=file] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.photo-controls label.btn:focus-within { box-shadow: var(--focus); }
+
+/* Possible matches */
+.match-group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow-sm); }
+.match-group + .match-group { margin-top: 14px; }
+.match-group h3 { font-size: 1rem; margin: 0 0 4px; }
+.match-group > p { color: var(--muted); font-size: .9rem; margin: 0 0 12px; }
+.match-group .list-cards { gap: 10px; }
+.match-why { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.auth-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.auth-row a { font-size: .88rem; font-weight: 600; }
 .container.narrow { max-width: 880px; padding-bottom: 56px; }
 .boot-alert { margin-top: 20px; }
 .sk-badge { width: 70px; height: 20px; margin-bottom: 10px; }
