@@ -351,6 +351,7 @@ dialog::backdrop { background: rgba(6, 30, 18, .55); backdrop-filter: blur(2px);
 .detail-list dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
 .contact-box { padding: 14px 16px; border-radius: 12px; background: var(--green-50); border: 1px solid #c9e3d1; font-size: .94rem; overflow-wrap: anywhere; }
 .contact-box.locked { background: #f5f7f5; border-color: var(--line); color: var(--ink-2); }
+.contact-box > .icon { display: inline-block; vertical-align: -3px; margin-right: 4px; }
 
 /* ---------- Prose (privacy) ---------- */
 .prose { max-width: 760px; }
